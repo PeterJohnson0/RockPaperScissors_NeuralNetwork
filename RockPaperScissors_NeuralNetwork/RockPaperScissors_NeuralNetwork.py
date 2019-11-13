@@ -7,6 +7,7 @@
 
 from NeurNet import *
 from RPS_IO import *
+from NNCanvas import *
 from tkinter import *
 
 #Main Loop
@@ -27,7 +28,7 @@ def main():
 	#Menu
 	menubar = Menu(root)
 	filemenu = Menu(menubar, tearoff=0)
-	filemenu.add_command(label="Reset Neural Network", command=lambda: Net.resetData())
+	filemenu.add_command(label="Reset Neural Network", command=lambda: Net.resetData)
 	filemenu.add_command(label="Reset Score", command=lambda: resetScore(Scores, L_YS, L_NS))
 	filemenu.add_command(label="RNG Mode", command=lambda: modeSet(GameMode,1))
 	filemenu.add_command(label="NN Mode", command=lambda: modeSet(GameMode,2))
@@ -37,19 +38,7 @@ def main():
 	#NN Canvas
 	Canvasframe = Frame(mainframe, height=400)
 	Canvasframe.pack(side = TOP)
-	NNC = Canvas(Canvasframe, width=600, height=400)
-	NNC.pack()
-	#Circles on Canvas
-	C_I = []
-	for i in range(NetI):
-		C_I.append(NNC.create_oval(95,45+(i+1)*(300/(NetI+1)),105,55+(i+1)*(300/(NetI+1))))
-	C_M = []
-	for i in range(NetM):
-		C_M.append(NNC.create_oval(295,45+(i+1)*(300/(NetM+1)),305,55+(i+1)*(300/(NetM+1))))
-	C_O = []
-	for i in range(NetO):
-		C_O.append(NNC.create_oval(495,45+(i+1)*(300/(NetO+1)),505,55+(i+1)*(300/(NetO+1))))
-	
+	NNC = NNCanvas(Canvasframe, NetI, NetM, NetO, Net)
 	#Scores
 	Scoreframe = Frame(mainframe, height=50)
 	Scoreframe.pack(side = TOP)
@@ -68,13 +57,13 @@ def main():
 	RPSframe = Frame(mainframe, height=50)
 	RPSframe.pack(side = BOTTOM)
 	RockButton = Button(RPSframe, font=("Times", "36", "bold"), text = "Rock", width=8)
-	RockButton['command'] = lambda: buttonPress(0, GameMode, L_YP, L_NP, L_W, Scores, L_YS, L_NS, P1_Hist, Net)
+	RockButton['command'] = lambda: buttonPress(0, GameMode, L_YP, L_NP, L_W, Scores, L_YS, L_NS, P1_Hist, Net, NNC)
 	RockButton.pack(side = LEFT)
 	PaperButton = Button(RPSframe, font=("Times", "36", "bold"), text = "Paper", width=8)
-	PaperButton['command'] = lambda: buttonPress(1, GameMode, L_YP, L_NP, L_W, Scores, L_YS, L_NS, P1_Hist, Net)
+	PaperButton['command'] = lambda: buttonPress(1, GameMode, L_YP, L_NP, L_W, Scores, L_YS, L_NS, P1_Hist, Net, NNC)
 	PaperButton.pack(side = LEFT)
 	ScissorsButton = Button(RPSframe, font=("Times", "36", "bold"), text = "Scissors", width=8)
-	ScissorsButton['command'] = lambda: buttonPress(2, GameMode, L_YP, L_NP, L_W, Scores, L_YS, L_NS, P1_Hist, Net)
+	ScissorsButton['command'] = lambda: buttonPress(2, GameMode, L_YP, L_NP, L_W, Scores, L_YS, L_NS, P1_Hist, Net, NNC)
 	ScissorsButton.pack(side = LEFT)
 	
 	#draw window

@@ -93,4 +93,16 @@ class NeurNet:
 		F.close 
 		F = open(self.F_Y, 'w') 
 		F.write('')
-		F.close 
+		F.close
+		np.random.seed(1)
+		self.syn0 = 2*np.random.random((self.NC_I,self.NC_M)) - 1
+		self.syn1 = 2*np.random.random((self.NC_M,self.NC_O)) - 1
+	
+	#Return Synopse Data
+	def getSyn(self, row):
+		if row == 0:
+			S = self.syn0
+		elif row == 1:
+			S = self.syn1
+		return S
+	

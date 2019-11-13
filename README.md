@@ -1,5 +1,5 @@
 # RockPaperScissors_NeuralNetwork
-v1.2 Programmed by Peter Johnson as of Nov 8, 2019
+v1.3 Programmed by Peter Johnson as of Nov 13, 2019
 
 Summary of Program:
 This program lets the user play the game of Rock Paper Scissors against a Neural Network. The purpose was to practice programming a neural network. In theory, a person should be randomly picking between the 3 outcomes.

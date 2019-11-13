@@ -59,7 +59,7 @@ def resetScore(Scores, L_S1, L_S2):
 	return
 
 #Play RPS after clicking Rock, Paper, or Scissors buttons.
-def buttonPress(P1, GameMode, L_P1, L_P2, L_W, Scores, L_S1, L_S2, P1_Hist, Net):
+def buttonPress(P1, GameMode, L_P1, L_P2, L_W, Scores, L_S1, L_S2, P1_Hist, Net, NNC):
 	P2 = CPU_move(GameMode, P1_Hist, Net) #get the computer's move.
 	#Update Player Pick.
 	if P1 == 0:
@@ -79,6 +79,8 @@ def buttonPress(P1, GameMode, L_P1, L_P2, L_W, Scores, L_S1, L_S2, P1_Hist, Net)
 	elif P2 == 2:
 		L_P2['text'] = 'Scissors'
 	W = PickWinner(P1, P2) #Determine Winner 
+	#Update Canvas
+	NNC.UpdateCanvas(P1_Hist, P2, Net)
 	#Update Winner + scores
 	if W == 0:
 		L_W['text'] = '  Tie  '
