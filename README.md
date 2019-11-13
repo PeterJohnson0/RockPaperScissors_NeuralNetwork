@@ -13,10 +13,7 @@ Installation Guide:
 2. Download prerequisite packages (numpy.py, tkinter.py) vai pip or equivalent:
 	pip install numpy
 	pip install tkinter
-
-graphics.py and save it in Python37\Lib\site-packages
-- available for download at mcsp.wartburg.edu/zelle/python/graphics-py
-
+	
 3. Double-click RockPaperScissors_NeuralNetwork.py to run the program.
 
 Instructions:
